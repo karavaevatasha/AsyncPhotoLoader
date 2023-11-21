@@ -9,15 +9,15 @@ import Foundation
 
 public typealias ErrorHandler = (String) -> Void
 
-open class NetworkServices {
-    static let shared = NetworkServices()
+final class NetworkProvider {
+    static let shared = NetworkProvider()
     
     let objectCache = NSCache<AnyObject, AnyObject>()
     let genericError = "Oops! Something went wrong. Please try again later"
     
     private init() {}
     
-    open func get(pathUrl: String,
+    func get(pathUrl: String,
                   parameters: [String: String] = [:],
                   successHandler: @escaping (Any) -> Void,
                   errorHandler: @escaping ErrorHandler) {
